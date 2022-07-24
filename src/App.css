@@ -1,0 +1,46 @@
+body{
+  margin: 0;
+  font-family: 'Inter',sans-serif;
+}
+.world-logo{
+  height: 30px;
+  margin-right: .5rem;
+}
+.nav{
+  background-color: #F55A5A;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+.journal-name{
+  font-size: 20px;
+  color: white;
+}
+.journey-img{
+  border-radius: 10px;
+  max-width: 100%;
+  height: 250px;
+}
+.journey-text{
+  text-align: left;
+  max-width: 100%;
+}
+.location-tag{
+  letter-spacing: 2px;
+}
+.journey-text > a{
+  text-decoration: underline;
+  color:#918E9B;
+}
+.journey-text>a:hover{
+  text-decoration: underline;
+}
+.image-border{
+  max-height: 100%;
+}
+.location-icon{
+  height: 18px;
+}
+.google-map-link{
+  overflow-wrap: break-word;
+}
