@@ -1,46 +1,73 @@
-body{
+body {
   margin: 0;
-  font-family: 'Inter',sans-serif;
+  font-family: 'Inter', sans-serif;
+  height: 100%;
 }
-.world-logo{
+
+.App {
+  height: 100vh;
+}
+
+.world-logo {
   height: 30px;
   margin-right: .5rem;
 }
-.nav{
+
+.navbar-custom {
   background-color: #F55A5A;
   display: flex;
   align-items: center;
   padding: 20px;
 }
-.journal-name{
+
+.journal-name {
   font-size: 20px;
   color: white;
 }
-.journey-img{
+
+.journey-img {
   border-radius: 10px;
   max-width: 100%;
   height: 250px;
 }
-.journey-text{
+
+.journey-text {
   text-align: left;
   max-width: 100%;
 }
-.location-tag{
+
+.location-tag {
   letter-spacing: 2px;
 }
-.journey-text > a{
+
+.journey-text>a {
   text-decoration: underline;
-  color:#918E9B;
+  color: #918E9B;
 }
-.journey-text>a:hover{
+
+.journey-text>a:hover {
   text-decoration: underline;
 }
-.image-border{
+
+.image-border {
   max-height: 100%;
 }
-.location-icon{
+
+.location-icon {
   height: 18px;
 }
-.google-map-link{
+
+.google-map-link {
   overflow-wrap: break-word;
+}
+.form-background{
+  background-color:#F55A5A;
+}
+.submit-button{
+  opacity: 1;
+  cursor: pointer;
+}
+.submit-button:disabled{
+  opacity: 0.4;
+  cursor: not-allowed;
 }
