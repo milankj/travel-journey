@@ -38,9 +38,13 @@ function Login(props) {
                     setIsLoggedIn(prevData=>!prevData)
                     navigate('/home')
                 }
+                if(res.status === 400){
+                    console.log(res)
+                }
             })
             .catch(err=>{
-                alert(err.code)
+                console.log(err)
+                alert(err)
                 setLoading(prevLoading=>!prevLoading)
                 return
             })
