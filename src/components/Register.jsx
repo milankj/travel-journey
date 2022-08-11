@@ -32,6 +32,7 @@ function Register() {
             })
             .catch(e=>{
                 console.log(e)
+                setIsLoading(prevLoad=>!prevLoad)
                 alert(e)
                 return
             })
