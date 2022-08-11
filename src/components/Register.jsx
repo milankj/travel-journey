@@ -26,7 +26,7 @@ function Register() {
                 if(res.status===201){
                     setIsLoading(prevLoad=>!prevLoad)
                     alert('User Registered')
-                    console.log(res)
+                    localStorage.setItem('token','Bearer '+res.data.token)
                     navigate('/home') 
                 }
             })
