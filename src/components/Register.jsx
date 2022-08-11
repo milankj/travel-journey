@@ -26,6 +26,7 @@ function Register() {
                 if(res.status===201){
                     setIsLoading(prevLoad=>!prevLoad)
                     alert('User Registered')
+                    console.log(res)
                     navigate('/home') 
                 }
             })
