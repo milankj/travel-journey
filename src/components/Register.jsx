@@ -30,9 +30,9 @@ function Register() {
                     navigate('/home') 
                 }
             })
-            .catch(err=>{
-                console.log(err)
-                alert(err)
+            .catch(e=>{
+                console.log(e)
+                alert(e)
                 return
             })
     }
