@@ -37,7 +37,7 @@ function Home(props) {
                                         isLoggedIn={props.isLoggedIn}
                                         setIsLoggedIn={props.setIsLoggedIn}
                                       />
-                                      <div className='text-center'>
+                                      <div className='text-center mt-5'>
                                       <a className='display-5 add-new-icon' onClick={()=>{navigate(`${location.pathname}/addnew`)}}>
                                         <i class="bi bi-plus-square"></i>
                                         <i class="bi bi-plus-square-fill"></i>
