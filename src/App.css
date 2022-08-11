@@ -59,6 +59,7 @@ body {
 
 .google-map-link {
   overflow-wrap: break-word;
+  cursor: pointer;
 }
 .form-background{
   background-color:#F55A5A;
@@ -68,6 +69,22 @@ body {
   cursor: pointer;
 }
 .submit-button:disabled{
-  opacity: 0.4;
   cursor: not-allowed;
+  opacity: 0.4;
+}
+.add-new-icon{
+  cursor: pointer;
+  color: rgb(255, 255, 255,0.5);
+}
+.add-new-icon .bi-plus-square-fill{
+  display: none;
+}
+.add-new-icon:hover{
+  color: white;
+}
+.add-new-icon:active .bi-plus-square-fill{
+  display: inline;
+}
+.add-new-icon:active .bi-plus-square{
+  display: none
 }

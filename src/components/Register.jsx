@@ -1,58 +1,45 @@
-import React,{useState} from 'react'
-import axios from 'axios'
+import React,{useEffect, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
-function Login(props) {
-    const [formData,setFormData] = useState({
+import axios from 'axios'
+function Register() {
+    const [userData,setUserData] = useState({
         username:"",
+        fullName:"",
         password:""
     })
-    const navigate = useNavigate()
-    const [isLoading,setLoading] = useState(false)
-    const [isAuth,setIsAuth] = useState(false)
-    const [isLoggedIn,setIsLoggedIn] = useState(false)
-    const handleChange = (e) => {
+    const [isLoading,setIsLoading] = useState(false)
+    const handleChange = (e)=>{
         const {name,value} = e.target
-        setFormData(prevFormData=>{
+        setUserData(prevData=>{
             return{
-                ...prevFormData,
-                [name]: value
+                ...prevData,
+                [name] : value
             }
         })
     }
-
-    const handleSubmit = (e)=>{
-        setLoading(prevLoading=>!prevLoading)
+    const navigate = useNavigate()
+    const handleSubmit = (e)=>{ 
+        setIsLoading(prevLoad=>!prevLoad) 
         e.preventDefault()
-        if(formData.username===''||formData.password===''){
-            alert('Username or password is empty')
-            setLoading(prevLoading=>!prevLoading)
-            return
-        }
-        axios.post(`https://traveljournalapi.herokuapp.com/api/v1/users/login`,{...formData})
+        axios.post(`https://traveljournalapi.herokuapp.com/api/v1/users`,{...userData})
             .then(res=>{
-                console.log(res)  
-                if(res.status === 200){
-                    console.log(res.data.token)
-                    localStorage.setItem('token','Bearer '+res.data.token)
-                    setLoading(prevLoading=>!prevLoading)
-                    setIsLoggedIn(prevData=>!prevData)
-                    navigate('/home')
+                if(res.status===201){
+                    setIsLoading(prevLoad=>!prevLoad)
+                    alert('User Registered')
+                    navigate('/home') 
                 }
             })
             .catch(err=>{
-                alert(err.code)
-                setLoading(prevLoading=>!prevLoading)
+                console.log(err)
+                alert(err)
                 return
             })
     }
-    console.log(formData)
-    console.log('Logged in : ',isLoggedIn)
-
-    return (
+    console.log(userData)
+  return (
         <div className="container h-100">
-            
             <div className="row h-100 justify-content-center align-items-center">
-                <div className="col-10 col-md-8 col-lg-6 form-background p-5 rounded-4 ">
+                <div className="col-10 col-md-8 col-lg-6 form-background p-5 rounded-4">
                     <form className="form mb-4" onSubmit={handleSubmit}>
                         <div className="form-group pb-5">
                             <label htmlFor="username">Username</label>
@@ -62,6 +49,19 @@ function Login(props) {
                                 id="username"
                                 placeholder="Enter Username"
                                 name="username"
+                                value={userData.username}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="form-group pb-5">
+                            <label htmlFor="fullName">Enter FullName</label>
+                            <input
+                                type="text"
+                                className="form-control fullName"
+                                id="fullName"
+                                placeholder="Enter Fullname"
+                                name="fullName"
+                                value={userData.fullName}
                                 onChange={handleChange}
                             />
                         </div>
@@ -72,8 +72,9 @@ function Login(props) {
                                 className="form-control password"
                                 id="password"
                                 placeholder="Enter Password"
-                                name="password"
-                                onChange={handleChange}
+                                name="password"  
+                                value={userData.password}
+                                onChange={handleChange}                              
                             />
                         </div>
                         <button
@@ -85,15 +86,16 @@ function Login(props) {
                                 submit-button 
                                 mt-3 "
                             >
-                                Login
+                                Register
                         </button>
                     </form>
                     <div className='text-center'>
-                    <a className='text-light' href='/register'>Doen't Have and Account?</a>
+                    <a className='text-light' href='/'>Already has an account?</a>
                     </div>
                 </div>
             </div>
         </div>
-    )
+  )
 }
-export default Login
+
+export default Register
