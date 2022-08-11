@@ -5,9 +5,12 @@ import data from '../data'
 import axios from 'axios'
 import Loader from './Loader'
 import Cookies from 'js-cookie'
+import {useLocation,useNavigate} from 'react-router-dom'
 function Home(props) {
   const [places, setPlaces] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
   useEffect(() => {
     axios.get(`https://traveljournalapi.herokuapp.com/api/v1/places?sort=title`, {
       headers: {
@@ -35,10 +38,10 @@ function Home(props) {
                                         setIsLoggedIn={props.setIsLoggedIn}
                                       />
                                       <div className='text-center'>
-                                      <a className='display-5 add-new-icon' href='/addnew'>
+                                      <a className='display-5 add-new-icon' onClick={()=>{navigate(`${location.pathname}/addnew`)}}>
                                         <i class="bi bi-plus-square"></i>
                                         <i class="bi bi-plus-square-fill"></i>
-                                      </a><br />
+                                      </a><br></br>
                                       <span>Add New</span>
                                       </div>
                                       {places.map(place => <Journal

@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import Nav from '../Nav'
 function AddNew() {
 
     const [newPlace,setNewPlace] = useState({
@@ -30,6 +31,10 @@ function AddNew() {
     console.log(headers)
     const handleSubmit = (e)=>{
         e.preventDefault()
+        if(newPlace.title===''||newPlace.location===''|| newPlace.googleMapUrl===''||newPlace.startDate===''||newPlace.endDate===''||newPlace.description===''||newPlace.imageUrl===''){
+            alert('Field Empty!!')
+            return
+        }
         axios.post(`https://traveljournalapi.herokuapp.com/api/v1/places`,{...newPlace},{
             headers:{
                 authorization: localStorage.getItem('token')
@@ -45,6 +50,8 @@ function AddNew() {
     }
     console.log(newPlace)
   return (
+    <div className='bg-dark'>
+        <Nav/>
     <div className='container h-100'>
         <div className='row h-100 justify-content-center align-items-center pt-5'>
             <div className='col-10 col-md-8 col-lg-6 form-background p-5 rounded-4 text-center'>
@@ -138,6 +145,7 @@ function AddNew() {
         </form>
             </div>
         </div>
+            </div>
     </div>
   )
 }

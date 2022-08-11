@@ -10,12 +10,12 @@ function App() {
   console.log('App component rendered')
   return (
     <Router>
-      <div className="App text-light">
+      <div className="App bg-dark text-light">
         <Routes>
           <Route path='/' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
           <Route path='/home' element={< Home />} />
-          <Route path='addnew' element={<AddNew/>}/>
+          <Route path='/:home/addnew' element={<AddNew/>}/>
           <Route path='*' element={<PageNotFound/>}/>
         </Routes>
       </div>

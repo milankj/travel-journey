@@ -61,6 +61,9 @@ body {
   overflow-wrap: break-word;
   cursor: pointer;
 }
+.google-map-link:hover{
+  color: white;
+}
 .form-background{
   background-color:#F55A5A;
 }
