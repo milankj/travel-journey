@@ -89,7 +89,7 @@ function Login(props) {
                         </button>
                     </form>
                     <div className='text-center'>
-                    <a className='text-light' href='/register'>Doen't Have and Account?</a>
+                    <a className='text-light' href='/register'>Doesn't Have an Account?</a>
                     </div>
                 </div>
             </div>

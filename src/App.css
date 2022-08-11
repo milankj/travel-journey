@@ -91,3 +91,6 @@ body {
 .add-new-icon:active .bi-plus-square{
   display: none
 }
+.brand{
+  cursor: pointer;
+}
