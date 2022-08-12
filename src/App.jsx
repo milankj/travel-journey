@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Register from './components/Register'
 import PageNotFound from './components/PageNotFound'
 import AddNew from './components/AddNew'
+import ProtectedRoutes from './components/ProtectedRoute'
 function App() {
   
   console.log('App component rendered')
@@ -14,8 +15,10 @@ function App() {
         <Routes>
           <Route path='/' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
-          <Route path='/home' element={< Home />} />
-          <Route path='/:home/addnew' element={<AddNew/>}/>
+          <Route element={<ProtectedRoutes/>}>
+              <Route path='/home' element={< Home />} />
+              <Route path='/:home/addnew' element={<AddNew/>}/>
+          </Route>
           <Route path='*' element={<PageNotFound/>}/>
         </Routes>
     </Router>

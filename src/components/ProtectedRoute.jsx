@@ -1,16 +1,10 @@
 import React from 'react'
-import {Route} from 'react-router-dom'
+import {Outlet,Navigate} from 'react-router-dom'
 
-function ProtectedRoute({component : Component, ...rest}) {
+function ProtectedRoutes({component : Component, ...rest}) {
   return (
-    <Route 
-        {...rest}
-        render={(props)=>{
-           if(localStorage.getItem('token')) 
-            return <Component {...props}/>
-        }}
-    />
+    localStorage.getItem('token') ? <Outlet/> : <Navigate to="/"/>
   )
 }
 
-export default ProtectedRoute
+export default ProtectedRoutes
