@@ -28,8 +28,6 @@ function Home(props) {
       })
       .catch(err => {
         console.log(err)
-        alert(err.response.request.statusText)
-        navigate('/')
       })
   }, [])
   console.log('Logged in ', props.isLoggedIn)
