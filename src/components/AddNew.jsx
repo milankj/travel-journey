@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Nav from '../Nav'
 function AddNew() {
-
+    const [isLoading,setIsLoading] = useState(false)
     const [newPlace,setNewPlace] = useState({
         title: "",
         location: "",
@@ -30,6 +30,7 @@ function AddNew() {
     const navigate = useNavigate()
     console.log(headers)
     const handleSubmit = (e)=>{
+        setIsLoading(prevLoad=>!prevLoad)
         e.preventDefault()
         if(newPlace.title===''||newPlace.location===''|| newPlace.googleMapUrl===''||newPlace.startDate===''||newPlace.endDate===''||newPlace.description===''||newPlace.imageUrl===''){
             alert('Field Empty!!')
@@ -42,10 +43,12 @@ function AddNew() {
         })
         .then(res=>{
             console.log(res)
+            setIsLoading(prevLoad=>!prevLoad)
             navigate('/home')
         })
         .catch(err=>{
             console.log(err)
+            setIsLoading(prevLoad=>!prevLoad)
         })
     }
     console.log(newPlace)
@@ -141,7 +144,11 @@ function AddNew() {
             name='imageUrl'
             />
             </div>
-            <button className='btn btn-primary mt-4'>Add Place</button>
+            <button 
+                disabled={isLoading}
+                className='btn btn-primary mt-4'>
+                Add Place
+            </button>
         </form>
             </div>
         </div>
