@@ -16,8 +16,8 @@ function App() {
           <Route path='/' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
           <Route element={<ProtectedRoutes/>}>
-              <Route path='/home' element={< Home />} />
-              <Route path='/:home/addnew' element={<AddNew/>}/>
+              <Route path='home' element={< Home />} />
+              <Route path=':home/addnew' element={<AddNew/>}/>
           </Route>
           <Route path='*' element={<PageNotFound/>}/>
         </Routes>
